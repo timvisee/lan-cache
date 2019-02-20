@@ -1,0 +1,11 @@
+#!/bin/bash
+
+export HOST_IP=`hostname -I | cut -d' ' -f1`
+
+echo Starting cache stack
+echo Configure the DHCP server to use the DNS IP: $HOST_IP
+echo
+echo
+echo
+
+docker-compose up

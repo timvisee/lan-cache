@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export HOST_IP=`hostname -I | cut -d' ' -f1`
+
+echo Stopping cache stack...
+docker-compose down

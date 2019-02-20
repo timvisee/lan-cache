@@ -1,0 +1,31 @@
+version: "2"
+
+services:
+  steamcache-dns:
+    image: steamcache/steamcache-dns:latest
+    environment:
+      - USE_GENERIC_CACHE=true
+      - LANCACHE_IP=$HOST_IP
+    ports:
+      - 53:53/udp
+  sniproxy:
+    image: steamcache/sniproxy:latest
+    restart: unless-stopped
+    depends_on:
+      - steamcache-dns
+    ports:
+      - 443:443
+  lancache:
+    image: steamcache/monolithic:latest
+    restart: unless-stopped
+    depends_on:
+      - sniproxy
+    environment:
+      - CACHE_MEM_SIZE 4000m
+      - CACHE_DISK_SIZE 50000m
+      - CACHE_MAX_AGE 365d
+    volumes:
+      - ./cache/data:/data/cache
+      - ./cache/logs:/data/logs
+    ports:
+      - 80:80
