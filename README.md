@@ -12,7 +12,7 @@ This is based on steamcache.net
   sudo systemctl stop bind9
   ```
 
-* Add local IP as DNS server to resolved configuration:
+* Add local IP as DNS server to resolv configuration:
 
   ```bash
   # File: /etc/resolv.conf
@@ -29,8 +29,14 @@ This is based on steamcache.net
 
   # Start the stack
   ./start
-
-  # Stop the stack after use
-  ./stop
   ```
 * Make sure to configure the host IP as DNS server in the network DHCP server.
+
+## Cleanup
+* Stop the stack using `./stop`.
+* Re-enable the DNS services on host:
+
+  ```bash
+  sudo systemctl start systemd-resolved
+  sudo systemctl start bind9
+  ```
