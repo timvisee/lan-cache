@@ -21,9 +21,9 @@ services:
     depends_on:
       - sniproxy
     environment:
-      - CACHE_MEM_SIZE 4000m
-      - CACHE_DISK_SIZE 50000m
-      - CACHE_MAX_AGE 365d
+      - CACHE_MEM_SIZE 6000m
+      - CACHE_DISK_SIZE 65000m
+      - CACHE_MAX_AGE 14d
     volumes:
       - ./cache/data:/data/cache
       - ./cache/logs:/data/logs

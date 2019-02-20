@@ -27,6 +27,8 @@ This is based on steamcache.net
 
   ```bash
   # File: /etc/resolv.conf
+
+  # Add line, above other namespace entries:
   nameserver 127.0.0.1
   ```
 
