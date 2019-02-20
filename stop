@@ -4,3 +4,6 @@ export HOST_IP=`hostname -I | cut -d' ' -f1`
 
 echo Stopping cache stack...
 docker-compose down
+
+echo Removing cache stack...
+docker-compose rm
