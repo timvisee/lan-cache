@@ -4,7 +4,18 @@ configure it for use at LAN-parties.
 
 This is based on steamcache.net
 
+## Requirements
+* Linux
+* Docker
+* `docker-compose`
+
 ## Usage
+* Pull images required for cache stack
+
+  ```bash
+  docker-compose pull
+  ```
+
 * Disable DNS stuff on host:
 
   ```bash
