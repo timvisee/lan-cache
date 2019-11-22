@@ -1,22 +1,22 @@
 version: "2"
 
 services:
-  steamcache-dns:
-    image: steamcache/steamcache-dns:latest
+  lancache-dns:
+    image: lancache/lancache-dns:latest
     environment:
       - USE_GENERIC_CACHE=true
       - LANCACHE_IP=$HOST_IP
     ports:
       - 53:53/udp
   sniproxy:
-    image: steamcache/sniproxy:latest
+    image: lancache/sniproxy:latest
     restart: unless-stopped
     depends_on:
-      - steamcache-dns
+      - lancache-dns
     ports:
       - 443:443
   lancache:
-    image: steamcache/monolithic:latest
+    image: lancache/monolithic:latest
     restart: unless-stopped
     depends_on:
       - sniproxy
